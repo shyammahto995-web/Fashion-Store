@@ -1,0 +1,16 @@
+# Netlify Build and SPA Routing Configuration
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Redirect all routes to index.html for Single Page Application routing (SPA deep links)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
